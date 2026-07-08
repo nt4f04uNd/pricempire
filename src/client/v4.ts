@@ -1,9 +1,16 @@
 import { BaseClient } from './base';
+import { TraderClient } from './trader';
 import { ItemPriceResponse, ItemMeta, V4Options } from '../types';
 
 export class V4Client extends BaseClient {
+    /** Self-account-scoped Trader Portfolio API (`/v4/trader/*`). See TraderClient for details. */
+    public readonly trader: TraderClient;
+
     constructor(apiKey: string, baseURL?: string) {
         super(apiKey, baseURL || 'https://api.pricempire.com/v4/paid');
+        // Trader endpoints live under /v4/trader, a sibling of /v4/paid, so they get their
+        // own BaseClient instance with their own base URL rather than reusing this.client.
+        this.trader = new TraderClient(apiKey);
     }
 
     async getPrices(options: V4Options = {}): Promise<ItemPriceResponse[]> {
