@@ -28,6 +28,12 @@ Pricempire is the leading destination for CS2, Rust, TF2, and Dota 2 price compa
 - Advanced filtering system
 - Real-time price updates (Premium)
 
+### Trader API note
+
+The live `v4/trader/portfolios` create-portfolio endpoint requires a `provider_key` field in the
+request payload. This library models that field on `CreatePortfolioDto` so callers can create
+portfolios successfully instead of hitting a server-side `500 Internal Server Error`.
+
 ## Platform Statistics
 
 - 24K+ Items Indexed

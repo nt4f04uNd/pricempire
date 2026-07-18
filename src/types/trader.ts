@@ -18,6 +18,8 @@ export interface CreatePortfolioDto {
     name: string;
     /** Optional portfolio description (max 500 chars). */
     description?: string;
+    /** Portfolio provider key, e.g. "lisskins". Required by the live Trader API. */
+    provider_key: string;
 }
 
 export interface UpdatePortfolioDto {
