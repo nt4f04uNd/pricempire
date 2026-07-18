@@ -1,8 +1,10 @@
+import type { TraderProviderKey } from './trader';
+
 export interface ItemPrice {
     price: number | null;
     count: number | null;
     updated_at: string | null;
-    provider_key: string;
+    provider_key: TraderProviderKey;
     meta?: {
         original_price: number;
         original_currency: string;
@@ -40,7 +42,7 @@ export interface ItemMeta {
 
 export interface V4Options {
     currency?: string;
-    sources?: string[];
+    sources?: TraderProviderKey[];
     app_id?: number;
     avg?: boolean;
     inflation_threshold?: number;

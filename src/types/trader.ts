@@ -1,8 +1,76 @@
+export const TRADER_PROVIDER_KEYS = [
+    'steam',
+    'steam_buy',
+    'buff163',
+    'buff163_buy',
+    'skinport',
+    'dmarket',
+    'dmarket_buy',
+    'lootfarm',
+    'bitskins',
+    'skinbaron',
+    'csfloat',
+    'csmoney',
+    'csmoneym',
+    'tradeit',
+    'buffmarket',
+    'whitemarket',
+    'swapgg',
+    'skinbid',
+    'c5game',
+    'youpin',
+    'youpin_buy',
+    'cstrade',
+    'gamerpay',
+    'skinthunder',
+    'lisskins',
+    'shadowpay',
+    'exeskins',
+    'ecosteam',
+    'ecosteam_buy',
+    'skinsmonkey',
+    'csdeals',
+    'skinswap',
+    'snipeskins',
+    'mannco',
+    'nerf',
+    'skinflow',
+    'skinout',
+    'haloskins',
+    'rapidskins',
+    'krakatoa',
+    'waxpeer',
+    'waxpeer_buy',
+    'marketcsgo',
+    'marketcsgo_buy',
+    'rusttm',
+    'itrade',
+    'skindeck',
+    'avanmarket',
+    'csgoempire',
+    'csgoempire_store',
+    'csgo500',
+    'csgofast',
+    'clashgg',
+    'csgoroll',
+    'csgoroll_store',
+    'skinrave',
+    'rollbit',
+    'csgogem',
+    '49skins',
+    'skinvault',
+    'skinplace',
+    'gameboost',
+    'test-market',
+] as const;
+
+export type TraderProviderKey = (typeof TRADER_PROVIDER_KEYS)[number];
+
 export interface TraderPortfolioSummary {
     id: number;
     name: string;
     slug: string;
-    provider_key: string;
+    provider_key: TraderProviderKey;
     currency: string;
     value: number;
     change24h: number;
@@ -19,7 +87,7 @@ export interface CreatePortfolioDto {
     /** Optional portfolio description (max 500 chars). */
     description?: string;
     /** Portfolio provider key, e.g. "lisskins". Required by the live Trader API. */
-    provider_key: string;
+    provider_key: TraderProviderKey;
 }
 
 export interface UpdatePortfolioDto {
@@ -91,7 +159,7 @@ export interface TraderPortfolioDetail {
         id: number;
         name: string;
         slug: string;
-        provider_key: string;
+        provider_key: TraderProviderKey;
         currency: string;
         status: boolean;
         created_at: string;
@@ -114,7 +182,7 @@ export interface TraderPriceAlert {
     type: TraderPriceAlertType;
     target_price?: number;
     percentage_change?: number;
-    provider_key: string;
+    provider_key: TraderProviderKey;
     notification_method: TraderNotificationMethod;
     enabled: boolean;
     last_triggered_at: string | null;
@@ -130,7 +198,7 @@ export interface CreatePriceAlertDto {
     target_price?: number;
     /** Required for "change" alerts. */
     percentage_change?: number;
-    provider_key: string;
+    provider_key: TraderProviderKey;
     notification_method: TraderNotificationMethod;
     notes?: string;
 }
@@ -256,7 +324,7 @@ export interface TraderPriceItem {
         price: number;
         count: number;
         updated_at: string;
-        provider_key: string;
+        provider_key: TraderProviderKey;
         avg_7?: number;
         avg_30?: number;
         avg_60?: number;

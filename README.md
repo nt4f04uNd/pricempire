@@ -31,8 +31,9 @@ Pricempire is the leading destination for CS2, Rust, TF2, and Dota 2 price compa
 ### Trader API note
 
 The live `v4/trader/portfolios` create-portfolio endpoint requires a `provider_key` field in the
-request payload. This library models that field on `CreatePortfolioDto` so callers can create
-portfolios successfully instead of hitting a server-side `500 Internal Server Error`.
+request payload. This library models that field on `CreatePortfolioDto` and exports a
+`TraderProviderKey` union plus `TRADER_PROVIDER_KEYS` list so callers can use a typed set of known
+provider keys instead of hitting a server-side `500 Internal Server Error` with malformed input.
 
 ## Platform Statistics
 
