@@ -312,6 +312,8 @@ export interface CreateTransactionDto {
 }
 
 export interface UpdateTransactionDto {
+    /** Concrete asset item identifier. */
+    asset_item_id?: number;
     type?: TraderTransactionType;
     quantity?: number;
     price?: number;
