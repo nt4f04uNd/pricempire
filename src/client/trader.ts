@@ -41,7 +41,7 @@ export class TraderClient extends BaseClient {
         return data;
     }
 
-    /** Create a new portfolio. Note: the live Trader API requires `provider_key` in the payload. */
+    /** Create a new portfolio. */
     async createPortfolio(dto: CreatePortfolioDto): Promise<TraderPortfolioSummary> {
         const { data } = await this.client.post('/portfolios', dto);
         return data;
